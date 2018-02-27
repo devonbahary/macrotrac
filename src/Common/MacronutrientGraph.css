@@ -1,0 +1,53 @@
+.MacronutrientGraph {
+    position: relative;
+    height: 100%;
+}
+
+.MacronutrientGraph-graph {
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: 1px;
+    width: 90%;
+    height: 80%;
+}
+
+.MacronutrientGraph-macroRow {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-gap: 2px;
+}
+
+.MacronutrientGraph-macroLabel {
+    position: relative;
+    background: whitesmoke;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    box-shadow: 1px 1px gray;
+    opacity: 0.6;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.MacronutrientGraph-barBg {
+    position: relative;
+    background: rgba(25, 25, 25, 0.1);
+}
+
+.MacronutrientGraph-barRatio {
+    position: absolute;
+    top: 50%; right: 6px;
+    opacity: 0.8;
+    color: white;
+    text-shadow: 1px 1px gray;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.MacronutrientGraph-barFill {
+    position: absolute;
+    width: 0;
+    height: 100%;
+    -webkit-transition: width 0.5s;
+    transition: width 0.5s;
+    box-shadow: 1px 0 gray;
+}

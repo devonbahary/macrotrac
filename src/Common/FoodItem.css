@@ -1,0 +1,84 @@
+.FoodItem,
+.FoodItem--open {
+    box-shadow: 0 1px 1px 1px silver;
+    font-family: 'Lato', sans-serif;
+    background: #F8F8F8;
+    -webkit-transition: height 0.2s ease-out;
+    transition: height 0.2s ease-out;
+    overflow-y: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.FoodItem {
+    height: 4rem;
+}
+
+.FoodItem--open {
+    height: 16rem;
+}
+
+.FoodItem-main {
+    display: grid;
+    grid-template-columns: 75% 25%;
+}
+
+.FoodItem--open .FoodItem-main {
+    box-shadow: 0 1px 5px 5px silver;
+    z-index: 1;
+}
+
+.FoodItem-info {
+    display: grid;
+    grid-template-rows: 2.5rem 1.5rem;
+}
+
+.FoodItem-infoName {
+    padding-left: 12px;
+    line-height: 3rem;
+    font-size: 1.4rem;
+}
+
+.FoodItem-infoServings {
+    padding-left: 24px;
+    line-height: 1rem;
+    opacity: 0.6;
+}
+
+.FoodItem-calories {
+    line-height: 4rem;
+    border-left: 1px solid lightgray;
+    text-align: center;
+}
+
+.FoodItem-graph {
+    position: relative;
+    height: 8rem;
+    background: #E8E8E8;
+    border-bottom: 1px solid silver;
+}
+
+.FoodItem-actionBar {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    height: 4rem;
+    background: #E0E0E0;
+}
+
+.FoodItem-actionBarIcon {
+    position: relative;
+    font-size: 2rem;
+    text-shadow: 1px 1px white;
+}
+
+.FoodItem--open .FoodItem-actionBarIcon {
+    animation: spin 1s;
+}
+
+.FoodItem-actionBarButtonContainer {
+    position: relative;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

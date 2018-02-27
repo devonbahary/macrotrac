@@ -5,11 +5,8 @@
 }
 
 .App {
-    position: relative;
-    top: 3rem; bottom: 3rem;
-    height: 100vh;
-    min-height: 600px;
-    width: 100vw;
+    position: fixed;
+    top: 3rem; right: 0; bottom: 3rem; left: 0;
     overflow-y: scroll;
 }
 
