@@ -1,28 +1,50 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
+    position: relative;
+    top: 3rem; bottom: 3rem;
+    height: 100vh;
+    min-height: 600px;
+    width: 100vw;
+    overflow-y: scroll;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.centered {
+    position: absolute;
+    top: 50%; left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.txt-theme {
+    color: rgb(65, 132, 225);
 }
 
-.App-title {
-  font-size: 1.5em;
+.bg-theme {
+    background: rgb(65, 132, 225);
 }
 
-.App-intro {
-  font-size: large;
+.theme-heading {
+    background: rgb(65, 132, 225);
+    color: white;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.bg-light {
+    background: #F0F0F0;
+}
+
+.bg-carbs {
+    background: rgb(232, 169, 14);
+}
+
+.bg-prot {
+    background: rgb(191, 0, 0);
+}
+
+.bg-fat {
+    background: rgb(52, 158, 99);
 }

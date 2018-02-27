@@ -1,0 +1,19 @@
+.NavFooter {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: fixed;
+    right: 0; bottom: 0; left: 0;
+    height: 3rem;
+    border-top: 1px solid gray;
+}
+
+.NavFooter-NavLink {
+    position: relative;
+    font-size: 1.4rem;
+    border-right: 1px solid lightgray;
+    color: black;
+}
+
+.NavFooter-NavLink:last-of-type {
+    border-right: none;
+}
