@@ -8,12 +8,14 @@ function NavHeaderMain(props) {
         paddingLeft: '12px'
     };
 
+    const buttonAdd = props.to ? <ButtonAdd to={props.to} /> : null;
+
     return (
         <div className="NavHeaderMain theme-heading" style={style}>
             <div>
                 {props.heading}
             </div>
-            <ButtonAdd to="/" />
+            {buttonAdd}
         </div>
     );
 }

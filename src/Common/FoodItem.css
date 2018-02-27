@@ -23,8 +23,8 @@
 }
 
 .FoodItem--open .FoodItem-main {
-    box-shadow: 0 1px 5px 5px silver;
-    z-index: 1;
+    box-shadow: 0 1px 5px 1px black;
+    z-index: 2;
 }
 
 .FoodItem-info {
@@ -64,14 +64,20 @@
     background: #E0E0E0;
 }
 
-.FoodItem-actionBarIcon {
+.FoodItem-actionBarIcon,
+.FoodItem-actionBarIcon--confirm {
     position: relative;
     font-size: 2rem;
     text-shadow: 1px 1px white;
+    color: gray;
 }
 
 .FoodItem--open .FoodItem-actionBarIcon {
     animation: spin 1s;
+}
+
+.FoodItem--open .FoodItem-actionBarIcon--confirm {
+    animation: shake 0.5s;
 }
 
 .FoodItem-actionBarButtonContainer {
@@ -81,4 +87,12 @@
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+}
+
+@keyframes shake {
+    0%  { transform: rotate(-45deg); }
+    25% { transform: rotate(45deg); }
+    50% { transform: rotate(-22.5deg); }
+    75% { transform: rotate(22.5deg); }
+    100% { transform: rotate(0deg); }
 }

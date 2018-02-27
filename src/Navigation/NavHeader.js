@@ -8,9 +8,10 @@ function NavHeader(props) {
     return (
         <div className="NavHeader">
             <Switch>
-                <Route exact path="/" render={(routeProps) => <NavHeaderMain heading="Today" />}/>
-                <Route exact path="/food" render={(routeProps) => <NavHeaderMain heading="My Food" />}/>
-                <Route exact path="/user" render={(routeProps) => <NavHeaderMain heading="Settings" />}/>
+                <Route exact path="/home" render={(routeProps) => <NavHeaderMain heading="Today" />} />
+                <Route exact path="/food" render={(routeProps) => <NavHeaderMain heading="My Food" to="/food/add" />}/>
+                <Route exact path="/food/add" render={(routeProps) => <NavHeaderSub heading="Add Food" to="/food" />}/>
+                <Route exact path="/user" render={(routeProps) => <NavHeaderMain heading="Settings" />} />
             </Switch>
         </div>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MacronutrientGraph from './MacronutrientGraph';
-import ButtonRemove from '../Common/ButtonRemove';
+import FoodItemButtonRemove from '../Common/FoodItemButtonRemove';
 import './FoodItem.css';
 
 class FoodItem extends Component {
@@ -8,12 +8,26 @@ class FoodItem extends Component {
         super(props);
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleConfirmRemove = this.handleConfirmRemove.bind(this);
 
-        this.state = {isOpen: false};
+        this.state = {
+            isOpen: false,
+            confirmRemove: false
+        };
     }
 
     handleClick() {
-        this.setState({isOpen: !this.state.isOpen});
+        this.setState({
+            isOpen: !this.state.isOpen,
+            isConfirmRemove: !this.state.isOpen ? false : this.state.isConfirmRemove
+        });
+    }
+
+    handleConfirmRemove(e) {
+        e.stopPropagation();
+        this.setState({
+            isConfirmRemove: true
+        });
     }
 
     render() {
@@ -26,6 +40,11 @@ class FoodItem extends Component {
             protRatio: 20,
             fatRatio: 35
         } : {};
+
+        const actionBarIcon = <div className={this.state.isConfirmRemove ? "FoodItem-actionBarIcon--confirm" : "FoodItem-actionBarIcon"}>
+            <span className={this.state.isConfirmRemove ? "ion-trash-a centered txt-theme" : "ion-gear-b centered"}></span>
+        </div>;
+
 
         return (
             <div className={foodItemClass} onClick={this.handleClick}>
@@ -46,11 +65,9 @@ class FoodItem extends Component {
                     <MacronutrientGraph food={macroGraphFood}/>
                 </div>
                 <div className="FoodItem-actionBar">
-                    <div className="FoodItem-actionBarIcon">
-                        <span className="ion-gear-b centered txt-theme"></span>
-                    </div>
+                    {actionBarIcon}
                     <div className="FoodItem-actionBarButtonContainer">
-                        <ButtonRemove />
+                        <FoodItemButtonRemove isConfirmRemove={this.state.isConfirmRemove} confirmRemove={this.handleConfirmRemove} />
                     </div>
                 </div>
             </div>

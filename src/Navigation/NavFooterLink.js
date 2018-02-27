@@ -5,7 +5,7 @@ function NavFooterLink(props) {
     const navIconClass = props.iconClass + " centered";
 
     return (
-        <NavLink to={props.to} exact className="NavFooter-NavLink" activeClassName="txt-theme">
+        <NavLink to={props.to} className="NavFooter-NavLink" activeClassName="txt-theme">
             <span className={navIconClass}></span>
         </NavLink>
     );

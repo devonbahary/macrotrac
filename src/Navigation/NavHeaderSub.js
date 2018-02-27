@@ -9,7 +9,7 @@ function NavHeaderSub(props) {
 
     return (
         <div className="NavHeaderSub bg-light" style={style}>
-            <ButtonBack to="/" />
+            <ButtonBack to={props.to} />
             <div>
                 {props.heading}
             </div>
