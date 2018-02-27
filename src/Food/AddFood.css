@@ -1,0 +1,63 @@
+.AddFood {
+    font-family: 'Lato', sans-serif;
+}
+
+.AddFood-entrySubmit {
+    position: relative;
+    background: #E8E8E8;
+}
+
+.AddFood-entry,
+.AddFood-entryWithLabel {
+    background: #F8F8F8;
+}
+
+.AddFood-entry,
+.AddFood-entryWithLabel,
+.AddFood-entrySubmit {
+    height: 4rem;
+    line-height: 4rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.AddFood-entryWithLabel {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.AddFood-entryLabel {
+    opacity: 0.6;
+    border-bottom: 2px solid silver;
+    background: #F0F0F0;
+    border-right: 1px solid silver;
+}
+
+.AddFood-entry input,
+.AddFood-entryWithLabel input,
+.AddFood-entryWithLabel select {
+    height: 100%;
+    width: 100%;
+    border: none;
+    background: #F8F8F8;
+    padding: 0 6px;
+    border-bottom: 2px solid silver;
+    font-size: 1.2rem;
+}
+
+.AddFood-entry input:focus,
+.AddFood-entryWithLabel input:focus,
+.AddFood-entryWithLabel select:focus {
+    outline: none;
+    border-bottom: 2px solid rgb(65, 132, 225);
+}
+
+.AddFood-entryWithLabel input[type="number"] {
+    text-align: right;
+    padding-right: 6px;
+}
+
+.AddFood-graph {
+    height: 8rem;
+    border-bottom: 1px solid silver;
+}

@@ -5,6 +5,7 @@
     right: 0; bottom: 0; left: 0;
     height: 3rem;
     border-top: 1px solid gray;
+    z-index: 2;
 }
 
 .NavFooter-NavLink {

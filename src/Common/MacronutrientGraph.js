@@ -1,10 +1,13 @@
 import React from 'react';
+import { calcCals, calcCarbRatio, calcProtRatio, calcFatRatio } from '../utils';
 import './MacronutrientGraph.css';
 
 function MacronutrientGraph(props) {
-    const carbsRatio = props.food.carbsRatio || 0;
-    const protRatio = props.food.protRatio || 0;
-    const fatRatio = props.food.fatRatio || 0;
+    const cals = calcCals(props.food);
+
+    const carbsRatio = calcCarbRatio(props.food);
+    const protRatio = calcProtRatio(props.food);
+    const fatRatio = calcFatRatio(props.food);
 
     const carbsStyle = {width: carbsRatio + '%'};
     const protStyle = {width: protRatio + '%'};

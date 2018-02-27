@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MacronutrientGraph from './MacronutrientGraph';
-import FoodItemButtonRemove from '../Common/FoodItemButtonRemove';
+import Button from '../Common/Button';
+import { calcCals } from '../utils';
 import './FoodItem.css';
 
 class FoodItem extends Component {
@@ -12,7 +13,8 @@ class FoodItem extends Component {
 
         this.state = {
             isOpen: false,
-            confirmRemove: false
+            confirmRemove: false,
+            food: props.food
         };
     }
 
@@ -25,21 +27,21 @@ class FoodItem extends Component {
 
     handleConfirmRemove(e) {
         e.stopPropagation();
-        this.setState({
-            isConfirmRemove: true
-        });
+        if (!this.state.isConfirmRemove) {
+            this.setState({
+              isConfirmRemove: true
+            });
+        } else {
+            this.handleClick();
+            this.props.removeFood(this.state.food);
+        }
+
     }
 
     render() {
         const food = this.props.food;
 
         const foodItemClass = this.state.isOpen ? "FoodItem--open" : "FoodItem";
-
-        const macroGraphFood = this.state.isOpen ? {
-            carbsRatio: 40,
-            protRatio: 20,
-            fatRatio: 35
-        } : {};
 
         const actionBarIcon = <div className={this.state.isConfirmRemove ? "FoodItem-actionBarIcon--confirm" : "FoodItem-actionBarIcon"}>
             <span className={this.state.isConfirmRemove ? "ion-trash-a centered txt-theme" : "ion-gear-b centered"}></span>
@@ -51,23 +53,23 @@ class FoodItem extends Component {
                 <div className="FoodItem-main">
                     <div className="FoodItem-info">
                         <div className={this.state.isOpen ? "FoodItem-infoName txt-theme" : "FoodItem-infoName" }>
-                            Banana
+                            {this.props.food.name}
                         </div>
                         <div className="FoodItem-infoServings">
-                            1 banana
+                            {this.props.food.servingSize} {this.props.food.servingUnit}
                         </div>
                     </div>
                     <div className="FoodItem-calories">
-                        710 cals
+                        {calcCals(this.props.food)} cals
                     </div>
                 </div>
                 <div className="FoodItem-graph">
-                    <MacronutrientGraph food={macroGraphFood}/>
+                    <MacronutrientGraph food={this.props.food}/>
                 </div>
                 <div className="FoodItem-actionBar">
                     {actionBarIcon}
                     <div className="FoodItem-actionBarButtonContainer">
-                        <FoodItemButtonRemove isConfirmRemove={this.state.isConfirmRemove} confirmRemove={this.handleConfirmRemove} />
+                        <Button isActive={this.state.isConfirmRemove} onClick={this.handleConfirmRemove} value={this.state.isConfirmRemove ? "Confirm" : "Remove"}/>
                     </div>
                 </div>
             </div>

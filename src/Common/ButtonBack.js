@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 function ButtonBack(props) {
     const style = {
@@ -7,9 +6,9 @@ function ButtonBack(props) {
     };
 
     return (
-        <Link to={props.to} style={style}>
+        <div className="ButtonBack"style={style} onClick={props.onClick}>
             <span className="ion-arrow-left-c txt-theme"></span>
-        </Link>
+        </div>
     );
 }
 

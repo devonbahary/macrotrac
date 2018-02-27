@@ -4,6 +4,7 @@ import NavHeader from '../Navigation/NavHeader';
 import NavFooter from '../Navigation/NavFooter';
 import Home from '../Home';
 import Food from '../Food';
+import AddFood from '../Food/AddFood';
 
 function Scene(props) {
     return (

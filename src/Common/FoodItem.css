@@ -1,6 +1,5 @@
 .FoodItem,
 .FoodItem--open {
-    box-shadow: 0 1px 1px 1px silver;
     font-family: 'Lato', sans-serif;
     background: #F8F8F8;
     -webkit-transition: height 0.2s ease-out;
@@ -11,10 +10,12 @@
 
 .FoodItem {
     height: 4rem;
+    box-shadow: 0 1px 1px 1px silver;
 }
 
 .FoodItem--open {
     height: 16rem;
+    box-shadow: 0 0 5px 1px rgb(65, 132, 225);
 }
 
 .FoodItem-main {
