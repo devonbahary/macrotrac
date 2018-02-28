@@ -53,14 +53,14 @@ class FoodItem extends Component {
                 <div className="FoodItem-main">
                     <div className="FoodItem-info">
                         <div className={this.state.isOpen ? "FoodItem-infoName txt-theme" : "FoodItem-infoName" }>
-                            {this.props.food.name}
+                            {food.name}
                         </div>
                         <div className="FoodItem-infoServings">
-                            {this.props.food.servingSize} {this.props.food.servingUnit}
+                            {food.servingSize} {food.servingUnit}
                         </div>
                     </div>
                     <div className="FoodItem-calories">
-                        {calcCals(this.props.food)} cals
+                        {calcCals(food)} cals
                     </div>
                 </div>
                 <div className="FoodItem-graph">

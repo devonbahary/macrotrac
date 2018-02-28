@@ -40,6 +40,9 @@ class Food extends Component {
     }
 
     addFood(foodItem) {
+        if (foodItem.servingUnit === foodItem.name && foodItem.servingSize > 1) {
+            foodItem.servingUnit += 's';
+        }
         const foodItems = this.state.foodItems.concat(foodItem);
         this.setState({foodItems});
     }

@@ -1,10 +1,8 @@
 import React from 'react';
-import { calcCals, calcCarbRatio, calcProtRatio, calcFatRatio } from '../utils';
+import { calcCarbRatio, calcProtRatio, calcFatRatio } from '../utils';
 import './MacronutrientGraph.css';
 
 function MacronutrientGraph(props) {
-    const cals = calcCals(props.food);
-
     const carbsRatio = calcCarbRatio(props.food);
     const protRatio = calcProtRatio(props.food);
     const fatRatio = calcFatRatio(props.food);
