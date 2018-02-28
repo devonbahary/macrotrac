@@ -2,19 +2,26 @@
 .FoodItem--open {
     font-family: 'Lato', sans-serif;
     background: #F8F8F8;
-    -webkit-transition: height 0.2s ease-out;
-    transition: height 0.2s ease-out;
+    -webkit-transition: max-height 0.2s ease-out;
+    transition: max-height 0.2s ease-out;
     overflow-y: hidden;
     margin-bottom: 0.5rem;
 }
 
 .FoodItem {
-    height: 4rem;
+    max-height: 4rem;
     box-shadow: 0 1px 1px 1px silver;
 }
 
 .FoodItem--open {
-    height: 16rem;
+    /* [max-height]
+        - minimum FoodItem height 4rem
+        - MacronutrientGraph needs 8rem (total 12rem)
+        - each FoodItemAction needs 4rem (total 12 + (# of FoodItemAction * 4rem))
+            - w/1 FoodItemAction (total 16rem)
+            - w/2 FoodItemAction (total 20rem)
+    */
+    max-height: 20rem;
     box-shadow: 0 0 5px 1px rgb(65, 132, 225);
 }
 
@@ -56,44 +63,4 @@
     height: 8rem;
     background: #E8E8E8;
     border-bottom: 1px solid silver;
-}
-
-.FoodItem-actionBar {
-    display: grid;
-    grid-template-columns: 25% 75%;
-    height: 4rem;
-    background: #E0E0E0;
-}
-
-.FoodItem-actionBarIcon,
-.FoodItem-actionBarIcon--confirm {
-    position: relative;
-    font-size: 2rem;
-    text-shadow: 1px 1px white;
-    color: gray;
-}
-
-.FoodItem--open .FoodItem-actionBarIcon {
-    animation: spin 1s;
-}
-
-.FoodItem--open .FoodItem-actionBarIcon--confirm {
-    animation: shake 0.5s;
-}
-
-.FoodItem-actionBarButtonContainer {
-    position: relative;
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes shake {
-    0%  { transform: rotate(-45deg); }
-    25% { transform: rotate(45deg); }
-    50% { transform: rotate(-22.5deg); }
-    75% { transform: rotate(22.5deg); }
-    100% { transform: rotate(0deg); }
 }

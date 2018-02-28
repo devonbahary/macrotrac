@@ -1,0 +1,21 @@
+.Time {
+    position: relative;
+    height: 8rem;
+    box-shadow: 0 0 5px 1px gray;
+    background: #F4F4F4;
+}
+
+.Time-dateContainer {
+    width: 80%;
+    height: 60%;
+    text-align: center;
+}
+
+.Time-day {
+    font-size: 2rem;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.Time-date {
+    opacity: 0.8;
+}

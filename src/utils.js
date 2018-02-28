@@ -1,4 +1,4 @@
-export const calcCals = (food) => (food.carbs || 0) * 4 + (food.prot || 0) * 4 + (food.fat || 0) * 9;
+export const calcCals = (food) => food ? Math.round((food.carbs || 0) * 4 + (food.prot || 0) * 4 + (food.fat || 0) * 9) : 0;
 
 export const calcCarbRatio = (food) => calcCals(food) ? Math.round((food.carbs || 0) * 4 / calcCals(food) * 100) : 0;
 

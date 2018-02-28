@@ -44,7 +44,7 @@ class AddFood extends Component {
                 this.setState({[eventName]: eventVal});
                 break;
             case 'servingSize':
-                if (Number(eventVal) > 0 && Number(eventVal) < 100) {
+                if (Number(eventVal) > 0 && Number(eventVal) < 1000) {
                     this.setState({[eventName]: eventVal});
                 }
                 break;
