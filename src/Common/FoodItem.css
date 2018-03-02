@@ -32,6 +32,7 @@
 .FoodItem-main {
     display: grid;
     grid-template-columns: 75% 25%;
+    cursor: pointer;
 }
 
 .FoodItem--open .FoodItem-main {

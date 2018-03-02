@@ -10,7 +10,8 @@ function ButtonAdd(props) {
         textAlign: 'center',
         fontSize: '1.4rem',
         zIndex: '1',
-        color: 'white'
+        color: 'white',
+        cursor: 'pointer'
     };
 
     return (

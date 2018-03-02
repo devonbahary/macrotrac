@@ -44,7 +44,7 @@ class Home extends Component {
                         actionName='Remove' requireConfirm={true}
                         actionIcon="ion-trash-a" confirmIcon="ion-gear-a" />
                 </FoodItem>
-            ) : <FoodItemNone />;
+            ) : <FoodItemNone onClick={this.handleModalToggle} />;
 
         return (
             <div className="Home">

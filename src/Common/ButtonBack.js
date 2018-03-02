@@ -2,7 +2,8 @@ import React from 'react';
 
 function ButtonBack(props) {
     const style = {
-        textAlign: 'center'
+        textAlign: 'center',
+        cursor: 'pointer'
     };
 
     return (

@@ -10,7 +10,8 @@ function Button(props) {
       fontSize: '1rem',
       boxShadow: '1px 1px gray',
       transition: 'background 0.5s',
-      outline: 'none'
+      outline: 'none',
+      cursor: 'pointer'
     };
 
     const className = props.isActive ? "theme-heading centered" : "bg-light centered";

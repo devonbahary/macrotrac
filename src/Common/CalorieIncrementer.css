@@ -5,6 +5,7 @@
 
 .CalorieIncrementer-buttonContainer {
     position: relative;
+    cursor: pointer;
 }
 
 .CalorieIncrementer-buttonIcon {
