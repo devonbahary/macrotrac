@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import NavHeader from '../Navigation/NavHeader';
 import NavFooter from '../Navigation/NavFooter';
+import Landing from '../Landing';
 import Home from '../Home';
 import Food from '../Food';
 import User from '../User';
@@ -133,6 +134,7 @@ class Scene extends Component {
             <div className="Scene">
                 <NavHeader />
                 <Switch>
+                    <Route exact path="/" component={Landing} />
                     <Route exact path="/home" render={(...routeProps) =>
                         <Home macroGoals={this.state.userMacroGoals} calorieGoal={this.state.userCalorieGoal}
                           todaysMeals={this.state.todaysMeals} foodItems={this.state.foodItems}

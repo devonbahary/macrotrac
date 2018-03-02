@@ -2,7 +2,8 @@ import React from 'react';
 
 function NavHeaderMain(props) {
     const style = {
-        paddingLeft: '12px'
+        paddingLeft: '12px',
+        height: '100%'
     };
 
     return (

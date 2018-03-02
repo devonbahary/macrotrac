@@ -1,0 +1,55 @@
+.Landing {
+    position: fixed;
+    top: 0; right: 0; bottom: 3rem; left: 0;
+    background: whitesmoke;
+    z-index: 2;
+}
+
+.Landing-title {
+    position: absolute;
+    top: 45%; left: 50%;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 3rem;
+    text-shadow: 1px 1px silver;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.Landing-iconContainer {
+    position: relative;
+    margin: 0 auto;
+    width: 3rem;
+    height: 3rem;
+    -webkit-box-shadow: 0 0 5px 1px silver;
+    -moz-box-shadow: 0 0 5px 1px silver;
+    box-shadow: 0 0 5px 1px silver;
+    border-radius: 50%;
+    margin-top: 0.5rem;
+    animation: rotate 4s ease 0s infinite;
+    background: white;
+}
+
+.Landing-iconContainer:hover {
+    animation: spin 1s linear 0s infinite;
+}
+
+.Landing-icon {
+    position: absolute;
+    top: 50%; left: 50%;
+    font-size: 2rem;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+
+
+@keyframes rotate {
+    0% { transform: rotate(25deg); }
+    50% { transform: rotate(-25deg); }
+    100% { transform: rotate(25deg); }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

@@ -11,7 +11,7 @@
     -moz-box-shadow: 0 0 5px 1px gray;
     box-shadow: 0 0 5px 1px gray;
     background: #F0F0F0;
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 .User-portraitContainer {
