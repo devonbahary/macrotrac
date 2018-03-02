@@ -119,11 +119,11 @@ class Scene extends Component {
 
     }
 
-    handleCalorieGoalChange(e) {
-        if (!e.target.value) {
+    handleCalorieGoalChange(val) {
+        if (!val) {
             this.setState({userCalorieGoal: 100});
-        } else if (e.target.value > 0 && e.target.value < 10000) {
-            this.setState({userCalorieGoal: e.target.value});
+        } else if (val > 0 && val < 10000) {
+            this.setState({userCalorieGoal: val});
         }
     }
 

@@ -4,6 +4,8 @@
     grid-template-columns: 4rem 1fr;
     font-family: 'Lato', sans-serif;
     background: #F4F4F4;
+    -webkit-box-shadow: 0 1px 1px 1px silver;
+    -moz-box-shadow: 0 1px 1px 1px silver;
     box-shadow: 0 1px 1px 1px silver;
 }
 

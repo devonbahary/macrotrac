@@ -24,7 +24,7 @@ function MacronutrientSlider(props) {
                                 {carbs}%
                             </div>
                         </div>
-                        <input name="carbs" className="MacronutrientSlider-sliderInput" type="range" min="0" max="100" value={carbs} onChange={props.onChange} />
+                        <input name="carbs" className="MacronutrientSlider-sliderInput" type="range" min="0" max="100" value={carbs} onChange={props.onChange} step="5"/>
                     </div>
                 </div>
                 <div className="MacronutrientSlider-sliderRow">
@@ -38,7 +38,7 @@ function MacronutrientSlider(props) {
                                 {prot}%
                             </div>
                         </div>
-                        <input name="prot" className="MacronutrientSlider-sliderInput" type="range" min="0" max="100" value={prot} onChange={props.onChange} />
+                        <input name="prot" className="MacronutrientSlider-sliderInput" type="range" min="0" max="100" value={prot} onChange={props.onChange} step="5"/>
                     </div>
                 </div>
                 <div className="MacronutrientSlider-sliderRow">
@@ -52,7 +52,7 @@ function MacronutrientSlider(props) {
                                 {fat}%
                             </div>
                         </div>
-                        <input name="fat" className="MacronutrientSlider-sliderInput" type="range" min="0" max="100" value={fat} onChange={props.onChange} />
+                        <input name="fat" className="MacronutrientSlider-sliderInput" type="range" min="0" max="100" value={fat} onChange={props.onChange} step="5" />
                     </div>
                 </div>
             </div>

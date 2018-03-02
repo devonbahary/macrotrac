@@ -10,6 +10,8 @@
 
 .FoodItem {
     max-height: 4rem;
+    -webkit-box-shadow: 0 1px 1px 1px silver;
+    -moz-box-shadow: 0 1px 1px 1px silver;
     box-shadow: 0 1px 1px 1px silver;
 }
 
@@ -22,6 +24,8 @@
             - w/2 FoodItemAction (total 20rem)
     */
     max-height: 20rem;
+    -webkit-box-shadow: 0 0 5px 1px rgb(65, 132, 225);
+    -moz-box-shadow: 0 0 5px 1px rgb(65, 132, 225);
     box-shadow: 0 0 5px 1px rgb(65, 132, 225);
 }
 
@@ -31,6 +35,8 @@
 }
 
 .FoodItem--open .FoodItem-main {
+    -webkit-box-shadow: 0 1px 5px 1px black;
+    -moz-box-shadow: 0 1px 5px 1px black;
     box-shadow: 0 1px 5px 1px black;
     z-index: 2;
 }

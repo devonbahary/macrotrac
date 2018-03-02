@@ -1,0 +1,23 @@
+.CalorieIncrementer {
+    display: grid;
+    grid-template-columns: 1fr 4rem 1fr;
+}
+
+.CalorieIncrementer-buttonContainer {
+    position: relative;
+}
+
+.CalorieIncrementer-buttonIcon {
+    background: rgb(65, 132, 225);
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    box-shadow: 1px 1px gray;
+}
+
+.CalorieIncrementer-calories {
+    text-align: center;
+}

@@ -7,5 +7,7 @@
 .Home-graph {
     height: 8rem;
     background: #E4E4E4;
+    -webkit-box-shadow: 0 0 5px 1px gray;
+    -moz-box-shadow: 0 0 5px 1px gray;
     box-shadow: 0 0 5px 1px gray;
 }

@@ -7,6 +7,8 @@
 .User-portrait {
     position: relative;
     height: 8rem;
+    -webkit-box-shadow: 0 0 5px 1px gray;
+    -moz-box-shadow: 0 0 5px 1px gray;
     box-shadow: 0 0 5px 1px gray;
     background: #F0F0F0;
     z-index: 1;

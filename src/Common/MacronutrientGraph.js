@@ -3,11 +3,6 @@ import { calcCarbRatio, calcProtRatio, calcFatRatio } from '../utils';
 import './MacronutrientGraph.css';
 
 function MacronutrientGraph(props) {
-    function getGoalErrString(ratio, goal) {
-        const err = ratio - goal;
-        return '(' + (err >= 0 ? '+' : '-') + Math.abs(err) + '%)';
-    }
-
     const carbsRatio = calcCarbRatio(props.food);
     const protRatio = calcProtRatio(props.food);
     const fatRatio = calcFatRatio(props.food);
