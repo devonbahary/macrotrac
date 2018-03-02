@@ -1,0 +1,31 @@
+.HeadingGoalSetting {
+    position: relative;
+    height: 4rem;
+}
+
+.HeadingGoalSetting-container {
+    position: absolute;
+    top: 1rem; left: 12px;
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    height: 2rem;
+    min-width: 60%;
+    line-height: 2rem;
+    border-radius: 12px;
+    padding: 0 12px;
+    background: whitesmoke;
+    font-size: 1.4rem;
+}
+
+.HeadingGoalSetting-icon {
+    position: relative;
+    opacity: 0.6;
+    border-right: 1px solid lightgray;
+}
+.HeadingGoalSetting-title {
+    font-family: "Ubuntu", sans-serif;
+    padding-left: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}

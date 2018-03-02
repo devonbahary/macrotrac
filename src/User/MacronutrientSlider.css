@@ -1,0 +1,79 @@
+.MacronutrientSlider {
+    position: relative;
+    height: 8rem;
+    background: #E4E4E4;
+    box-shadow: 0 0 5px 1px gray;
+}
+
+.MacronutrientSlider-slider {
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: 1px;
+    width: 90%;
+    height: 80%;
+
+}
+
+.MacronutrientSlider-sliderRow {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-gap: 2px;
+}
+
+.MacronutrientSlider-sliderLabel {
+    position: relative;
+    background: whitesmoke;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    box-shadow: 1px 1px gray;
+    opacity: 0.6;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.MacronutrientSlider-sliderContainer {
+    position: relative;
+}
+
+.MacronutrientSlider-sliderInput {
+    position: absolute;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    background: none;
+}
+
+.MacronutrientSlider-sliderInput::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 2rem;
+    background: whitesmoke;
+    box-shadow: 1px 1px gray;
+    cursor: pointer;
+}
+
+.MacronutrientSlider-sliderBg {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: rgba(25, 25, 25, 0.1);
+}
+
+.MacronutrientSlider-sliderFill {
+    width: 0;
+    height: 100%;
+    box-shadow: 1px 0 gray;
+}
+
+.MacronutrientSlider-sliderRatio {
+    position: absolute;
+    top: 50%; right: 6px;
+    color: white;
+    text-shadow: 1px 1px gray;
+    font-family: 'Ubuntu', sans-serif;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 1;
+}

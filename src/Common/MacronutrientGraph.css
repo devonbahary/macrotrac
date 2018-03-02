@@ -43,11 +43,24 @@
     transform: translateY(-50%);
 }
 
-.MacronutrientGraph-barFill {
+.MacronutrientGraph-barRatioGoal {
+    font-size: 80%;
+    text-shadow: none;
+}
+
+.MacronutrientGraph-barFill,
+.MacronutrientGraph-barFill--goal {
     position: absolute;
     width: 0;
     height: 100%;
+}
+
+.MacronutrientGraph-barFill {
+    box-shadow: 1px 0 gray;
     -webkit-transition: width 0.5s;
     transition: width 0.5s;
-    box-shadow: 1px 0 gray;
+}
+
+.MacronutrientGraph-barFill--goal {
+    box-shadow: 1px 0 white;
 }

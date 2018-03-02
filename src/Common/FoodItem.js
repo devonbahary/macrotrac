@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import MacronutrientGraph from './MacronutrientGraph';
-import Button from './Button';
 import { calcCals } from '../utils';
 import './FoodItem.css';
 

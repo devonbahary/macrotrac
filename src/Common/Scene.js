@@ -4,6 +4,7 @@ import NavHeader from '../Navigation/NavHeader';
 import NavFooter from '../Navigation/NavFooter';
 import Home from '../Home';
 import Food from '../Food';
+import User from '../User';
 
 class Scene extends Component {
     constructor(props) {
@@ -13,6 +14,8 @@ class Scene extends Component {
         this.removeMeal = this.removeMeal.bind(this);
         this.addFood = this.addFood.bind(this);
         this.removeFood = this.removeFood.bind(this);
+        this.handleMacroGoalChange = this.handleMacroGoalChange.bind(this);
+        this.handleCalorieGoalChange = this.handleCalorieGoalChange.bind(this);
 
         this.state = {
             todaysMeals: [
@@ -37,7 +40,13 @@ class Scene extends Component {
                     fat: 17,
                     id: 2
                 }
-            ]
+            ],
+            userMacroGoals: {
+                carbs: 40,
+                prot: 20,
+                fat: 40
+            },
+            userCalorieGoal: 2000
         };
     }
 
@@ -70,16 +79,71 @@ class Scene extends Component {
         }
     }
 
+    handleMacroGoalChange(e) {
+        const newVal = Number(e.target.value);
+        let dif, carbs, prot, fat;
+        switch (e.target.name) {
+            case 'carbs':
+                dif = this.state.userMacroGoals.carbs - newVal;
+                prot = this.state.userMacroGoals.prot;
+                fat = this.state.userMacroGoals.fat;
+                prot = Math.min(100, Math.max(0, prot + dif));
+                if (Math.abs(this.state.userMacroGoals.prot - prot) < Math.abs(dif)) {
+                    fat = Math.min(100, Math.max(0, fat + (dif - Math.abs(this.state.userMacroGoals.prot - prot))));
+                }
+                this.setState({userMacroGoals: {carbs: newVal, prot, fat}});
+                break;
+            case 'prot':
+                dif = this.state.userMacroGoals.prot - newVal;
+                fat = this.state.userMacroGoals.fat;
+                carbs = this.state.userMacroGoals.carbs;
+                fat = Math.min(100, Math.max(0, fat + dif));
+                if (Math.abs(this.state.userMacroGoals.fat - fat) < Math.abs(dif)) {
+                    carbs = Math.min(100, Math.max(0, carbs + (dif - Math.abs(this.state.userMacroGoals.fat - fat))));
+                }
+                this.setState({userMacroGoals: {carbs, prot: newVal, fat}});
+                break;
+            case 'fat':
+                dif = this.state.userMacroGoals.fat - newVal;
+                carbs = this.state.userMacroGoals.carbs;
+                prot = this.state.userMacroGoals.prot;
+                carbs = Math.min(100, Math.max(0, carbs + dif));
+                if (Math.abs(this.state.userMacroGoals.carbs - carbs) < Math.abs(dif)) {
+                    prot = Math.min(100, Math.max(0, prot + (dif - Math.abs(this.state.userMacroGoals.carbs - carbs))));
+                }
+                this.setState({userMacroGoals: {carbs, prot, fat: newVal}});
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    handleCalorieGoalChange(e) {
+        if (!e.target.value) {
+            this.setState({userCalorieGoal: 100});
+        } else if (e.target.value > 0 && e.target.value < 10000) {
+            this.setState({userCalorieGoal: e.target.value});
+        }
+    }
+
+
     render() {
         return (
             <div className="Scene">
                 <NavHeader />
                 <Switch>
                     <Route exact path="/home" render={(...routeProps) =>
-                        <Home todaysMeals={this.state.todaysMeals} foodItems={this.state.foodItems} addMeal={this.addMeal} removeMeal={this.removeMeal} />
+                        <Home macroGoals={this.state.userMacroGoals} calorieGoal={this.state.userCalorieGoal}
+                          todaysMeals={this.state.todaysMeals} foodItems={this.state.foodItems}
+                          addMeal={this.addMeal} removeMeal={this.removeMeal} />
                     }/>
                     <Route exact path="/food" render={(...routeProps) =>
                         <Food foodItems={this.state.foodItems} addFood={this.addFood} removeFood={this.removeFood} />
+                    } />
+                    <Route exact path="/user" render={(...routeProps) =>
+                        <User macroGoals={this.state.userMacroGoals} onMacroGoalChange={this.handleMacroGoalChange}
+                          calorieGoal={this.state.userCalorieGoal} onCalorieGoalChange={this.handleCalorieGoalChange} />
                     } />
                 </Switch>
                 <NavFooter />

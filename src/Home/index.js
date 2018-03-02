@@ -6,6 +6,7 @@ import FoodItemNone from '../Common/FoodItemNone';
 import MacronutrientGraph from '../Common/MacronutrientGraph';
 import ButtonAdd from '../Common/ButtonAdd';
 import AddMeal from './AddMeal';
+import TotalCalories from '../Common/TotalCalories';
 import './Home.css';
 
 class Home extends Component {
@@ -49,8 +50,9 @@ class Home extends Component {
             <div className="Home">
                 <Time />
                 <div className="Home-graph">
-                    <MacronutrientGraph food={totalFood}/>
+                    <MacronutrientGraph food={totalFood} macroGoals={this.props.macroGoals} />
                 </div>
+                <TotalCalories food={totalFood} calorieGoal={this.props.calorieGoal} />
                 {todaysMealElements}
                 <ButtonAdd onClick={this.handleModalToggle}/>
                 <AddMeal isOpen={this.state.isModalOpen} foodItems={this.props.foodItems} addMeal={this.addMeal} onExit={this.handleModalToggle} />

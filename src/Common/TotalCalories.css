@@ -1,0 +1,54 @@
+.TotalCalories {
+    position: relative;
+    height: 3rem;
+    background: #E0E0E0;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid silver;
+}
+
+.TotalCalories-container {
+    position: absolute;
+    top: 50%; right: 5%;
+    transform: translateY(-50%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 60%;
+    height: 2rem;
+    background: whitesmoke;
+    border-radius: 12px;
+    line-height: 2rem;
+    font-family: "Ubuntu", sans-serif;
+}
+
+.TotalCalories-label {
+    opacity: 0.6;
+    text-transform: uppercase;
+    padding-left: 6px;
+}
+
+.TotalCalories-calories {
+    position: relative;
+    padding-right: 12px;
+    text-align: right;
+    font-size: 1.2rem;
+}
+
+.TotalCalories-caloriesGoal {
+    font-size: 60%;
+    opacity: 0.6;
+}
+
+.TotalCalories-calories input {
+    height: calc(2rem - 2px);
+    width: 100%;
+    border: none;
+    background: #F8F8F8;
+    padding: 0 6px;
+    font-size: 1.2rem;
+    text-align: right;
+}
+
+.TotalCalories-calories input:focus {
+    outline: none;
+    border-bottom: 2px solid rgb(65, 132, 225);
+}

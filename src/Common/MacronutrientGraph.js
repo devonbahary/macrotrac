@@ -3,6 +3,11 @@ import { calcCarbRatio, calcProtRatio, calcFatRatio } from '../utils';
 import './MacronutrientGraph.css';
 
 function MacronutrientGraph(props) {
+    function getGoalErrString(ratio, goal) {
+        const err = ratio - goal;
+        return '(' + (err >= 0 ? '+' : '-') + Math.abs(err) + '%)';
+    }
+
     const carbsRatio = calcCarbRatio(props.food);
     const protRatio = calcProtRatio(props.food);
     const fatRatio = calcFatRatio(props.food);
@@ -10,6 +15,10 @@ function MacronutrientGraph(props) {
     const carbsStyle = {width: carbsRatio + '%'};
     const protStyle = {width: protRatio + '%'};
     const fatStyle = {width: fatRatio + '%'};
+
+    const carbsGoalStyle = props.macroGoals ? {width: props.macroGoals.carbs + '%', opacity: '0.4'} : {display: 'none'};
+    const protGoalStyle = props.macroGoals ? {width: props.macroGoals.prot + '%', opacity: '0.4'} : {display: 'none'};
+    const fatGoalStyle = props.macroGoals ? {width: props.macroGoals.fat + '%', opacity: '0.4'} : {display: 'none'};
 
     return (
         <div className="MacronutrientGraph">
@@ -19,8 +28,8 @@ function MacronutrientGraph(props) {
                         <span className="centered">carbs</span>
                     </div>
                     <div className="MacronutrientGraph-barBg">
-                        <div className="MacronutrientGraph-barFill bg-carbs" style={carbsStyle}>
-                        </div>
+                        <div className="MacronutrientGraph-barFill bg-carbs" style={carbsStyle}></div>
+                        <div className="MacronutrientGraph-barFill--goal bg-carbs" style={carbsGoalStyle}></div>
                         <div className="MacronutrientGraph-barRatio">
                             {carbsRatio}%
                         </div>
@@ -32,6 +41,7 @@ function MacronutrientGraph(props) {
                       </div>
                     <div className="MacronutrientGraph-barBg">
                         <div className="MacronutrientGraph-barFill bg-prot" style={protStyle}></div>
+                        <div className="MacronutrientGraph-barFill--goal bg-prot" style={protGoalStyle}></div>
                         <div className="MacronutrientGraph-barRatio">
                             {protRatio}%
                         </div>
@@ -43,6 +53,7 @@ function MacronutrientGraph(props) {
                     </div>
                     <div className="MacronutrientGraph-barBg">
                         <div className="MacronutrientGraph-barFill bg-fat" style={fatStyle}></div>
+                        <div className="MacronutrientGraph-barFill--goal bg-fat" style={fatGoalStyle}></div>
                         <div className="MacronutrientGraph-barRatio">
                             {fatRatio}%
                         </div>
