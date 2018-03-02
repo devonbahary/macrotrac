@@ -16,6 +16,9 @@
 .env.test.local
 .env.production.local
 
+./assets/imgs/issue1-home.png
+./assets/imgs/issue1-user.png
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
