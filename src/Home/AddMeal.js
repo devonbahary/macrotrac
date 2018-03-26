@@ -23,47 +23,45 @@ class AddMeal extends Component {
         };
     }
 
-    componentWillMount() {
+    componentWillReceiveProps(nextProps) {
         this.initServingInputHash();
     }
 
     initServingInputHash() {
         let servingInputHash = {};
-        this.props.foodItems.forEach(foodItem => {
-            servingInputHash[foodItem.id] = foodItem.servingSize;
-        });
-        this.setState({servingInputHash});
+        if (this.props.foodItems) {
+            this.props.foodItems.forEach(foodItem => {
+                servingInputHash[foodItem._id] = foodItem.servingSize;
+            });
+            this.setState({servingInputHash});
+        }
     }
 
     clearServingInputKey(foodItem) {
         let servingInputHash = Object.assign({}, this.state.servingInputHash);
-        servingInputHash[foodItem.id] = foodItem.servingSize;
+        servingInputHash[foodItem._id] = foodItem.servingSize || servingInputHash[foodItem._id];
         this.setState({servingInputHash});
-    }
-
-    getFilteredFoodItems() {
-        const regex = new RegExp(this.state.search, 'i');
-        return this.state.foodItems.filter(foodItem => foodItem.name.match(regex));
     }
 
     handleSearchChange(e) {
         this.setState({search: e.target.value});
         const regex = new RegExp(e.target.value, 'i');
-        this.state.foodItems.filter(foodItem =>
-            !foodItem.name.match(regex)
-        ).forEach(foodItem => this.clearServingInputKey(foodItem));
+        if (this.state.foodItems) {
+            this.state.foodItems.filter(foodItem =>
+                !foodItem.name.match(regex)
+            ).forEach(foodItem => this.clearServingInputKey(foodItem));
+        }
     }
 
     handleServingSizeChange(e, foodItem) {
         if (e.target.value > 0 && e.target.value < 1000) {
             let servingInputHash = Object.assign({}, this.state.servingInputHash);
-            servingInputHash[foodItem.id] = e.target.value;
+            servingInputHash[foodItem._id] = e.target.value;
             this.setState({servingInputHash});
         }
     }
 
     handleExit() {
-        // this.initServingInputHash();
         this.setState({search: ''});
         this.props.onExit();
     }
@@ -74,18 +72,21 @@ class AddMeal extends Component {
     }
 
     render() {
-        const filteredFoodItems = this.getFilteredFoodItems();
-        const foodItemElements = filteredFoodItems.length > 0 ?
-            filteredFoodItems.map(foodItem => {
+        const regex = new RegExp(this.state.search, 'i');
+        const foodItemElements = this.props.foodItems ?
+            this.props.foodItems.filter((foodItem) => {
+                return foodItem.name.match(regex);
+            }).map(foodItem => {
+                const servingInput = this.state.servingInputHash[foodItem._id];
                 let updatedFoodItem = Object.assign({}, foodItem);
-                updatedFoodItem.servingSize = this.state.servingInputHash[foodItem.id];
-                updatedFoodItem.carbs *= this.state.servingInputHash[foodItem.id] / foodItem.servingSize;
-                updatedFoodItem.prot *= this.state.servingInputHash[foodItem.id] / foodItem.servingSize;
-                updatedFoodItem.fat *= this.state.servingInputHash[foodItem.id] / foodItem.servingSize;
+                updatedFoodItem.servingSize = servingInput;
+                updatedFoodItem.carbs *= servingInput / foodItem.servingSize;
+                updatedFoodItem.prot *= servingInput / foodItem.servingSize;
+                updatedFoodItem.fat *= servingInput / foodItem.servingSize;
 
                 return (
-                    <FoodItem key={foodItem.id} food={updatedFoodItem} forceClose={!this.props.isOpen} onClose={this.clearServingInputKey}>
-                        <FoodItemServingInput food={foodItem} value={this.state.servingInputHash[foodItem.id]} onChange={this.handleServingSizeChange} />
+                    <FoodItem key={foodItem._id} food={updatedFoodItem} forceClose={!this.props.isOpen} onClose={this.clearServingInputKey}>
+                        <FoodItemServingInput food={foodItem} value={servingInput} onChange={this.handleServingSizeChange} />
                         <FoodItemAction food={updatedFoodItem} action={this.addMeal}
                           actionName='Add Meal'
                           actionIcon="ion-fork" confirmIcon="ion-gear-a"

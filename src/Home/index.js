@@ -38,8 +38,8 @@ class Home extends Component {
         }, {carbs: 0, prot: 0, fat: 0});
 
         const todaysMealElements = this.props.todaysMeals.length > 0 ?
-            this.props.todaysMeals.map((foodItem, index) =>
-                <FoodItem key={index} food={foodItem}>
+            this.props.todaysMeals.map((foodItem) =>
+                <FoodItem key={foodItem._id} food={foodItem}>
                     <FoodItemAction food={foodItem} action={this.props.removeMeal}
                         actionName='Remove' requireConfirm={true}
                         actionIcon="ion-trash-a" confirmIcon="ion-gear-a" />

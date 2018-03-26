@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import axios from 'axios';
 import NavHeader from '../Navigation/NavHeader';
 import NavFooter from '../Navigation/NavFooter';
 import Landing from '../Landing';
@@ -22,26 +23,8 @@ class Scene extends Component {
             todaysMeals: [
 
             ],
-            foodItems: [
-                {
-                    name: 'Banana',
-                    servingSize: '1',
-                    servingUnit: 'banana',
-                    carbs: 27,
-                    prot: 1.3,
-                    fat: 0.4,
-                    id: 1
-                },
-                {
-                    name: 'Hamburger',
-                    servingSize: '120',
-                    servingUnit: 'grams (g)',
-                    carbs: 29,
-                    prot: 20,
-                    fat: 17,
-                    id: 2
-                }
-            ],
+            todaysMealCount: 0,
+            foodItems: null,
             userMacroGoals: {
                 carbs: 40,
                 prot: 20,
@@ -51,9 +34,23 @@ class Scene extends Component {
         };
     }
 
+    componentDidMount() {
+        axios.get('https://macrotrac-server.herokuapp.com/foods/')
+          .then((res) => {
+              console.log(JSON.stringify(res.data.foods), undefined, 2);
+              this.setState({foodItems: res.data.foods});
+          }).catch((err) => console.log(err));
+    }
+
     addMeal(foodItem) {
-        const todaysMeals = this.state.todaysMeals.concat(foodItem);
-        this.setState({todaysMeals});
+        let foodItemWithTodayIndex = Object.assign({}, foodItem);
+        const todaysMealCount = this.state.todaysMealCount + 1;
+        foodItemWithTodayIndex._id = todaysMealCount;
+        const todaysMeals = this.state.todaysMeals.concat(foodItemWithTodayIndex);
+        this.setState({
+            todaysMeals,
+            todaysMealCount
+        });
     }
 
     removeMeal(foodItem) {
@@ -68,16 +65,23 @@ class Scene extends Component {
         if (foodItem.servingUnit === foodItem.name && foodItem.servingSize > 1) {
             foodItem.servingUnit += 's';
         }
-        const foodItems = this.state.foodItems.concat(foodItem);
-        this.setState({foodItems});
+        axios.post('https://macrotrac-server.herokuapp.com/foods/', foodItem)
+          .then((res) => {
+              axios.get('https://macrotrac-server.herokuapp.com/foods/')
+                .then((res) => {
+                    this.setState({foodItems: res.data.foods});
+                });
+          }).catch((err) => console.log(err));
     }
 
     removeFood(food) {
-        const index = this.state.foodItems.indexOf(food);
-        if (index > -1) {
-            const foodItems = this.state.foodItems.filter((foodItem, i) => i !== index);
-            this.setState({foodItems});
-        }
+        axios.delete(`https://macrotrac-server.herokuapp.com/foods/${food._id}`)
+          .then((res) => {
+              axios.get('https://macrotrac-server.herokuapp.com/foods/')
+                .then((res) => {
+                    this.setState({foodItems: res.data.foods});
+                });
+          }).catch((err) => console.log(err));
     }
 
     handleMacroGoalChange(e) {

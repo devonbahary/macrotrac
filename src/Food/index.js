@@ -22,9 +22,9 @@ class Food extends Component {
     }
 
     render() {
-        const foodItems = this.props.foodItems.length > 0 ?
+        const foodItems = this.props.foodItems ?
             this.props.foodItems.map(foodItem =>
-                <FoodItem key={foodItem.id} food={foodItem}>
+                <FoodItem key={foodItem._id} food={foodItem}>
                     <FoodItemAction food={foodItem} action={this.props.removeFood}
                         actionName='Remove' requireConfirm={true}
                         actionIcon="ion-trash-a" confirmIcon="ion-gear-a" />
